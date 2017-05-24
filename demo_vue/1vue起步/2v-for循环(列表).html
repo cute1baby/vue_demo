@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<ul>
+		<li v-for="todo in todos">{{todo.id}}==={{todo.name}}</li>
+	</ul>
+</div>
+<script src="vue.js"></script>
+<script>
+var vm=new Vue({
+	el:"#app",
+	data (){
+		return {
+			todos:[
+				{id:1,name:"吃饭"},
+				{id:2,name:"睡觉"},
+				{id:3,name:"打豆豆"}
+			]
+		}
+	}
+})
+</script>
+</body>
+</html>

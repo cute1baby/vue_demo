@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p>{{message}}</p>
+	<button v-on:click="reverseBTN">字符串倒叙</button>
+</div>
+<script src="vue.js"></script>
+<script>
+var vm =new Vue({
+	el:"#app",
+	data (){
+		return {
+			message:"hello,world"
+		}
+	},
+	methods:{
+		//这里的methods是一个对象，里面的函数写成json的格式。
+		//数据一旦变化那么对应的页面的内容也会跟着发生变化。这就是数据绑定
+		reverseBTN:function(){
+			this.message = this.message.split("").reverse().join("");
+		}
+	}
+})	
+</script>
+</body>
+</html>

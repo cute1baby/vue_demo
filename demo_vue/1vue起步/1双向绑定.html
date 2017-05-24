@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+<input type="text" v-model="message">
+<p>hello,{{message}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+/*这里分析一下MVVM这个框架在这里对应着一些什么。
+很清楚的看到，这里Model对应的是数据也就是你这里的data返回的这个对象。V自然就是view,对应的就是上面的模板部分，后面这里的vm自然就是让数据在model和view之间进行切换的部分。也就是这里的vm(Vue的实例对象)。
+并且这里的el明显就是element的简写，data自然就是指的数据。
+
+*/
+
+var vm=new Vue({
+		el:"#app",
+		data (){
+			return {
+				message:"这是一个全新的js库"
+			}
+		}
+	})
+</script>
+</body>
+</html>

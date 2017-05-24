@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<input type="text" v-model="inputTodo" v-on:keyup.enter="addTodo">
+	<ul>
+		<li v-for="todo in todos">
+			{{todo.id}}---{{todo.text}}
+			<button v-on:click="deleteTodo($index)">X</button>
+		</li>
+	</ul>
+</div>
+<script src="vue.js"></script>	
+<script>
+//为什么会报错？一直没明白
+var vm = new Vue({
+	el:"#app",
+	data (){
+		return {
+			inputTodo:"",
+			todos:[
+				{id:1,text:"name1"},
+				{id:2,text:"name2"},
+				{id:3,text:"name3"}
+			]
+		}
+	},
+	methods:{
+		addTodo:function(){
+			//event
+			//此时需要把inputTodo的值放进todo里面。
+			var newTodo = {
+				id:new Date(),
+				text:this.inputTodo
+			}
+			//此时把新制作的todo数据插入到todos数据中
+			this.todos.unshift(newTodo);
+			//清空inputTodo的值(data对象里的值被vm代理)
+			this.inputTodo="";
+		},
+		deleteTodo:function(index){
+			this.todos.splice(index,1);
+		}
+
+	}
+})	
+</script>
+</body>
+</html>
