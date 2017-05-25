@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 切换一个元素：
+v-if
+v-else
+v-show
+
+切换多个元素
+<template v-if="ok">  //不能使用v-show
+
+//注意：这里比较v-if和v-show的优缺点：
+如果需要频繁切换v-show较好，如果在运行条件不会改变太多使用v-if较好。 -->
+<div id="app">
+	<p v-if="ok">你好吗</p>
+	<p v-else>你不好吗</p>
+	<br>
+	<p v-show="ok">你看我显示了</p>
+	<p v-show="!ok">你看我只能隐藏了</p>
+
+	<template v-if="ok">
+		<p>11111111111</p>	
+		<p>22222222222</p>	
+	</template>
+//这里可以简单的把click里面的代码看成js代码，怎么写都是可以的。
+	<button @click="ok=!ok">反转</button>
+</div>
+<script src="vue.js"></script>
+<script>
+var vm=new Vue({
+	el:"#app",
+	data:{
+		ok:true
+	}
+})
+</script>
+</body>
+</html>
