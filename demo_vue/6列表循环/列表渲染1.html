@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 1、遍历显示数组：v-for/$index
+2、遍历显示对象：v-for/$key
+3、扩展数组的方法：
+$set(index,value)  //常用来重置数据的操作
+$remove(value)  //常用来移除数据的操作-->
+<!-- ------------------------------------------------------
+除此之外还有：
+push()
+pop()
+shift()
+unshift()
+splice()
+sort()
+reverse()这些数组的变异方法 -->
+<div id="demo">
+	<h2>测试：v-for遍历数组</h2>
+	<!-- 这里指的就是循环列表persons，并且在这里过滤掉在名称name中存在0这一项的字段。 -->
+<ul>
+	<li v-for="person in persons | filterBy '0' in 'name'">
+		{{person.name}} -- {{person.id}} -- {{person.value}} -- {{$index}}
+		<button @click="deleteThisMsg(person)">删除</button>
+		<button @click="refreshThisMsg(person,{id:Date.now(), name:'AB00Co', value:336 })">更新</button>
+	</li>
+</ul>
+
+	<h2>测试：v-for遍历对象</h2>
+<ul>
+<!-- 一般用的比较少，多是去遍历数组的 -->
+	<li v-for="item in persons[0]">
+	{{$key}} --- {{item}}
+	</li>
+</ul>
+</div>
+<script src="vue.js"></script>
+<script>
+new Vue({
+	el:"#demo",
+	data:{
+		persons:[
+			{id:1,name:"fnjrg0",value:"car"},
+			{id:2,name:"0jr4540",value:"bar"},
+			{id:3,name:"ni喜欢的",value:"titit"},
+			{id:4,name:"080wref0",value:"didi"}
+		]
+	},
+	methods:{
+		/*方法一：比较麻烦
+		deleteThisMsg :function (person){
+			var index=this.persons.indexOf(person);
+			console.log(index);
+			this.persons.splice(index,1);
+		}*/
+		/*方法二：数组的扩展方法$remove()*/
+		deleteThisMsg :function (person){
+			//直接删除person数据
+			this.persons.$remove(person);
+		},
+		refreshThisMsg :function(oData,nData){
+			//更新的意思就是把新的数据覆盖老数据进行显示，那么按照逻辑就需要传递两个数据进去。
+
+			//此时判断person的位置。
+			var index = this.persons.indexOf(oData);
+			console.log(index);
+			this.persons.$set(index,nData);
+		}
+		
+	}
+})	
+</script>
+</body>
+</html>
