@@ -16,6 +16,7 @@
 <div id="demo">
 
   <h2>测试: v-for 遍历数组</h2>
+  <!-- 此时是相当于过滤筛选出在name中带有o的p值，所以此时获取的p的位置下标才是真正的下标值。 -->
   <ul>
     <li v-for="p in persons | filterBy 'o' in 'name'">
       {{$index}}---{{p.name}}---{{p.age}}---{{p.id}}
@@ -54,10 +55,10 @@
         var index = this.persons.indexOf(p)
         this.persons.splice(index, 1)
         */
-        this.persons.$remove(p)
+        this.persons.$remove(p)    //$remove(value)删除的结果就是当前被过滤的那个p参数对象。
       },
       updatePerson (oldP, newP) {
-        var index = this.persons.indexOf(oldP)
+        var index = this.persons.indexOf(oldP);//获取老对象数据在数组中的位置下标
         // this.persons[index] = newP
         this.persons.$set(index, newP)
       }

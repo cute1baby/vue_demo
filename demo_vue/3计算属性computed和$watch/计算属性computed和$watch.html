@@ -60,12 +60,12 @@ var vm = new Vue({
 })
 //监视firstName和lastName。从而让fullName的值发生改变。
 vm.$watch("firstName",function(val){
-//监视的对象是firstName,变化后的值是val
-this.fullName2 = val + this.lastName;
+	//监视的对象是firstName,变化后的值是val
+	this.fullName2 = val + this.lastName;
 })
 vm.$watch("lastName",function(val){
-//监视的对象是firstName,变化后的值是val
-this.fullName2 =  this.firstName + val;
+	//监视的对象是firstName,变化后的值是val
+	this.fullName2 =  this.firstName + val;
 })
 
 

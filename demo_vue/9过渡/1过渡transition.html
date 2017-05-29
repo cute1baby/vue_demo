@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+/* test+transition */
+.test-transition {
+transition: all 3s ease-In 0s;
+  height: 30px;
+  padding: 10px;
+  background-color: green;
+  overflow: hidden;
+}
+/* test+enter,test+leave */
+/* .test-enter 定义进入的开始状态 */
+/* .test-leave 定义离开的结束状态 */
+.test-enter, .test-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+  background-color: red;
+}
+</style>
+<body>
+<div id="app">
+	<p v-show="Tshow" transition="test">你要控制你自己</p>
+	<button @click="Tshow=!Tshow">切换</button>
+</div>
+<script src="vue.js"></script>
+<script>
+//监视动画(其实就是监视生命周期)
+Vue.transition("test",{
+	//生命周期回调函数(钩子)
+	beforeEnter:function(el){
+		//开始显示之前
+		el.textContent ="beforeEnter";
+		console.log("beforeEnter()-----beforeEnter");
+	},
+	enter:function(el){
+		//刚开始显示的时候
+		el.textContent ="enter";
+		console.log("enter()------刚开始显示的时候");
+	},
+	afterEnter:function(el){
+		//显示之后
+		el.textContent ="afterEnter";
+		console.log("afterEnter()------显示之后");
+	},
+	beforeLeave:function(el){
+		//消失之前
+		el.textContent ="beforeLeave";
+		console.log("beforeLeave()------消失之前");
+	},
+	leave:function(el){
+		//正在消失
+		el.textContent ="leave";
+		console.log("leave()------正在消失");
+	},
+	afterLeave:function(el){
+		//消失之后
+		el.textContent ="afterLeave";
+		console.log("afterLeave()------消失之后");
+	},
+})
+var vm = new Vue({
+	el:"#app",
+	data:{
+		Tshow:true
+	}
+})
+</script>
+</body>
+</html>

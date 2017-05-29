@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 1、使用v-model对表单项数据双向绑定text/textarea.
+checkbox:绑定boolean/string值radio,select.
+2、失去焦点才更新：Lazy(首字母大写小写一样)
+3、延迟指定时间才更新：debounce='1000'  防反跳-->
+<div id="app">
+<h2>设置v-model进行双向绑定</h2>
+	<span>Message is:{{msg}}</span><br>
+	<input type="text" v-model="msg"><br>
+	<textarea v-model="msg"></textarea>
+
+	<hr>
+<h2>设置v-model自动选择checkbox=true会对应</h2>
+	<input type="checkbox" id="checkbox" v-model="like">
+	<label for="checkbox">{{like}}</label>
+
+	<hr>
+<h2>设置v-model将值放进数组中进行数据绑定，修改数据从而改变页面的内容显示</h2>	
+<!-- 此时John被选中,通过默认在names中输入值达到这个效果-->
+	<input type="checkbox" id="jack" value="jack" v-model="names">
+	<label for="jack">Jack</label>
+	<input type="checkbox" id="john" value="john" v-model="names">
+	<label for="john">John</label>
+	<input type="checkbox" id="mike" value="mike" v-model="names">
+	<label for="mike">Mike</label>
+	<br>
+	<!-- 通过分割成json的格式进行显示出来 -->
+	<span>Checked names:{{names | json}}</span>
+	
+	<hr>
+<h2>设置v-model将值放进option中进行遍历</h2>	
+	<select name="" id="select" v-model="cityInit">
+		<option value="">未选择</option>
+		<option v-for="city in citys" :value="city.value">{{city.text}}</option>
+	</select><br>
+<span>你选中的值是：{{cityInit}}</span>
+
+<hr>
+<h2>单选框</h2>
+<!-- 在sex中默认写入FEMALE的字符串，即该部分被默认选中 -->
+<input type="radio" v-model="sex" id="female" value="FEMALE">
+<label for="female">FEMALE</label>
+<input type="radio" v-model="sex" id="male" value="MALE">
+<label for="male">MALE</label><br>
+<span>你的性别是：{{sex}}</span>
+	<hr>
+	<span>失去焦点的时候才会有数据变化</span>	
+	<input type="text" placeholder="失去焦点才更新" v-model="msg2" lazy>
+	<p>输入的数据为：{{msg2}}</p><br>
+	<span>延迟时间执行(好处是能够减少响应次数，例如百度搜索就是这样做的)</span>	
+	<input type="text" placeholder="延迟2s后更新" v-model="msg3" debounce="2000">
+	<p>输入的数据为：{{msg3}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+new Vue({
+	el:"#app",
+	data:{
+		msg:"www.baidu.com",
+		like:true,
+		names:["john"],
+		cityInit:"shanghai",
+		citys:[
+			{value:"beijing",text:"北京"},
+			{value:"hongkong",text:"香港"},
+			{value:"shenzhen",text:"深圳"},
+			{value:"shanghai",text:"上海"},
+			{value:"guangzhou",text:"广州"}
+		],
+		sex:"MALE",
+		msg2:"失去焦点才执行",
+		msg3:""
+	}
+})
+</script>
+</body>
+</html>

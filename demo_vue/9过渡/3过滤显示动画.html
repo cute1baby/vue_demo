@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+ul {
+    padding-left: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    border:1px solid #ccc;
+    padding:10px 0 10px 20px;
+
+}
+.staggered-transition {
+    transition: all .5s ease;
+    overflow: hidden;
+    margin: 0;
+    height: 24px;
+}
+.staggered-enter, .staggered-leave {
+    opacity: 0;
+    height: 0;
+}	
+</style>
+<body>
+<div id="demo">
+    <input v-model="query">
+    <!-- stagger="100":表示在过滤的时候一个一个的过滤，每一个数据间隔时间是500毫秒 -->
+    <ul>
+        <li v-for="item in list | filterBy query"
+            transition="staggered"
+            stagger="100">
+          {{item.msg}}
+          <button @click="deleteThis($index)">X</button>
+         </li>
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script>
+new Vue({
+    el: '#demo',
+    data: {
+        query: '',
+        list: [
+            { msg: 'Bruce Lee' },
+            { msg: 'Kung 5555' },
+            { msg: 'Chuck Norris' },
+            { msg: 'Jet Li' },
+            { msg: 'Kung 1111' },
+            { msg: 'Kung 2222' },
+            { msg: 'Kung 3333' },
+            { msg: 'Kung 4444' },
+            { msg: 'Jackie Chan' },
+            { msg: 'Kung 6666' }
+
+        ]
+    },
+    methods:{
+    	deleteThis:function(index){
+    		this.list.splice(index,1);
+    	}
+    }
+})	
+</script>
+</body>
+</html>
