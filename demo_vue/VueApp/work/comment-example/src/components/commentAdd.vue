@@ -29,7 +29,7 @@
               comment:{}
             }
         },
-        mehtods:{
+        methods:{
           addComment(){
               //const是用来声明常量的。一旦声明，其值就不能改变。
               //得到comment对象

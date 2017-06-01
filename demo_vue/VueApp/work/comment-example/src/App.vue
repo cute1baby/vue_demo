@@ -33,7 +33,7 @@ export default {
           {
               id:1,
               name:'Bob',
-              content:'相传Vue是大神尤玉玺写出来的'
+              content:'相传Vue是大神尤雨溪写出来的'
           },
           {
             id:2,
