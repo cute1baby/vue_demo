@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p v-upper-html="msg"></p>
+	<p v-lower-html="url"></p>
+</div>
+<script src="vue.js"></script>
+<script>
+//全局指令
+Vue.directive('upper-html',function(val){
+	//val只的是当前标签对应的值，这里是msg
+	this.el.innerHTML = val.toUpperCase();
+})
+//directives进行局部定义
+var vm= new Vue({
+	el:"#app",
+	data:{
+		msg:"I love you",
+		url:"GRTHYJYUHFY"
+	},
+	directives:{
+		'lower-html':function(val){
+			this.el.innerHTML = val.toLowerCase();
+		}
+	}
+})	
+</script>
+</body>
+</html>

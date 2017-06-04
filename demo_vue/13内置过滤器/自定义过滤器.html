@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 1. 全局过滤器，写在编译之前
+  Vue.filter('过滤器名', function(value, xxx, yyy) {
+    //处理逻辑
+    return result;
+  });
+2. 局部过滤器，写在new Vue()里面
+  new Vue({
+    filters : {
+      '过滤器名' : function(value, xxx, yyy) {
+        //处理逻辑
+        return result;
+      }
+    }
+  }) -->
+<div id="app">
+	<p>{{msg|reverse}}</p>
+	<p>{{msg|innerWrap '真是奇怪的一件事' '想不到你会喜欢他呢'}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+/*方法是：reverse。在全局定义这个过滤属性，使用Vue.filter*/
+Vue.filter('reverse',function(value) {
+	return value.split('').reverse().join('');
+});
+var vm =new Vue({
+	el:"#app",
+	data (){
+		return {
+			msg:'他喜欢你'
+		}
+	},
+	filters:{
+		//方法是：innerWrap,局部定义过滤属性，三个参数使用【filters】的方式。
+		innerWrap (value,left,right){
+			return left +' '+value+' '+right;
+		}
+	}
+})	
+</script>
+</body>
+</html>

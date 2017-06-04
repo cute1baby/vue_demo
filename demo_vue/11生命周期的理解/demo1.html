@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p v-show="isClear">{{msg}}</p>
+	<button @click="destroyedId">清除</button>
+</div>
+<!-- 此时引入的是vue1.0的内容 -->
+<script src="vue.js"></script>
+<script>
+var vm= new Vue({
+	el:"#app",
+	data() {
+		return {
+			msg:"一直在等你",
+			isClear:true
+		}
+	},
+	/*template:"<p>{{msg}}</p>",*/  //存在template的时候他会把el里面的内容替换成模板中的内容。
+	methods:{
+		//在执行$destroy的时候其实是执行了：beforeDestroy和destroyed两个方法。在一进入页面的时候其实是执行了：created(),beforeCompile(),compiled(),ready()方法，这些方法在一起组成了一个生命周期。
+		destroyedId(){
+			this.$destroy();  
+			//我们可以发现我们在清除vm上的属性和方法的时候并且没有把计时器给清除掉，这回给浏览器造成很大的负担。
+			//因此解决的办法是在beforeDestroy的时候就把计时器给清除掉，这样就不会在destroy的时候还存在计时器了。
+		}
+	},
+	created(){
+		console.log("created()");
+		var _this=this;
+		/*方法1
+		this.timeId=setInterval(() =>{
+			console.log("梦雪梦雪")
+			this.isClear=!this.isClear;
+		},1000)*/
+		/*方法2*/
+		this.timeId=setInterval(function(){
+			console.log("梦雪梦雪")
+			_this.isClear=!_this.isClear;
+		},1000)
+	},
+	beforeCompile(){
+		console.log("beforeCompile()");
+	},
+	compiled(){
+		console.log("compiled()");
+	},
+	ready(){
+		console.log("ready()");
+	},
+	beforeDestroy(){
+		console.log("beforeDestroy()");
+		clearInterval(this.timeId);
+	},
+	destroyed(){
+		console.log("destroyed()");
+	},
+})
+</script>
+</body>
+</html>

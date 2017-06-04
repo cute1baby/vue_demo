@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+<!-- 该指令会显示数据中的长度值。 -->
+	<p v-my-directive="msg"></p>
+
+</div>
+<script src="vue.js"></script>
+<script src="myPlugin.js"></script>
+<script>
+//声明使用指定的插件
+Vue.use(myPlugin) //内部会调用MyPlugin.install(Vue)
+//调用其全局方法
+Vue.MyGlobalTool();
+var vm=new Vue({
+	el:"#app",
+	data (){
+		return {
+			msg:"你是不是插件"
+		}
+	}
+})
+vm.$myMethodself();  //调用vue的实例方法
+</script>
+</body>
+</html>

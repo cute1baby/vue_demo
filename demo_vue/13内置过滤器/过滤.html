@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p>{{msg|capitalize}}首字母大写</p>   
+	<p>{{msg|uppercase}}全部大写</p>
+	<p>{{msg|lowercase}}全部小写</p>
+	<p>{{price|currency}}</p>
+	<p>{{price|currency 'RMB'}}</p>
+	<p>{{count}}{{count|pluralize 'item'}}这个比较奇妙，如果count是1的话显示的是单数，否则显示的是复数。</p>
+	<p>{{persons|json}}默认的是object的tostring方法，显示为[object Object],[object Object]</p>
+	<!-- 只显示开始 2 个元素 -->
+	<p v-for="t in totals|limitBy 2">{{t|json}}</p>
+	<!-- 只显2个元素，从下标是1的开始 -->
+	<p v-for="t in persons|limitBy 2 1">{{t|json}}</p><hr>
+<!-- 过滤对象中name里面带有字母t的几项 -->
+	<p v-for="t in totals|filterBy 't' in 'name'">{{t|json}}</p>
+<hr><hr>	
+	<!-- 给id进行排序，从小到大的顺序 -->
+	<p v-for="t in totals|orderBy 'id'">{{t|json}}</p>
+	<!-- 给id进行排序，从大到小的顺序 -->
+	<p v-for="t in totals|orderBy 'id' -1">{{t|json}}</p>
+</div>
+
+<div id="app2" style="margin-bottom:200px;">
+	<input type="text" v-model="myName">
+	<p v-for="p in persons|filterBy myName in 'name'">{{p.name}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+new Vue({
+	el:"#app",
+	data:{
+		msg:"i love you",
+		price:123456,
+		count:10,
+		persons:[{name:'TOM'},{name:'jack'},{name:'dddd'},{name:'cccc'},{name:'gggg'}],
+		totals:[{id:1,name:"frmg"},{id:2,name:"fgtg"},{id:3,name:"fgtjy"}]
+	}
+})	
+new Vue({
+	el:"#app2",
+	data:{
+		myName:"",
+		persons:[
+			{name:"李钟",id:123},
+			{name:"李梦雪",id:333},
+			{name:"李任意",id:323},
+			{name:"李小飞",id:633}
+		]
+	}
+})
+
+</script>
+</body>
+</html>

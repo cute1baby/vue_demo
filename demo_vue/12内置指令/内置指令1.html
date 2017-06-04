@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+[v-cloak] { display: none }	
+</style>
+<body>
+
+<div id="app">
+	<p v-text="msg"></p>
+	<p v-html="msg"></p>
+	<img :src="url" alt="">
+	<p v-el:msg>梦雪梦雪，快出来啊</p>
+	<button @click="showMsg">显示一下</button>
+
+	<p v-cloak>防止闪现</p>
+</div>
+<script src="vue.js"></script>
+<script>
+var vm =new Vue({
+	el:"#app",
+	data:{
+		msg:'<a href="https://www.baidu.com">百度一下</a>',
+		url:'http://img5.imgtn.bdimg.com/it/u=611483611,2895064642&fm=26&gp=0.jpg'
+	},
+	methods:{
+		showMsg(){
+			alert(this.$els.msg.textContent); 
+		}
+	}
+})	
+</script>
+</body>
+</html>
