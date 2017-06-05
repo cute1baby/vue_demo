@@ -100,8 +100,8 @@
           
             * :class="{classA : isA, classB : isB}"
             
-            * :class="[classA, classB]"
-            
+            * :class="[classA, classB]"用得比较少
+            
         * :style
         
             :style="{color : color}"
@@ -112,7 +112,7 @@
         * v-el:xxx
         * 读取得到标签对象: this.$els.xxx
         
-* 过滤器
+* 过滤器（对数据在显示之前进行按照我们的要求进行格式化和过滤操作）
   * 内置
     * capitalize : 首字母大小
     * uppercase : 全部大写
@@ -125,6 +125,12 @@
     * filterBy : 限定数组的部分元素(值)
     * orderBy : 对数组进行排序
   * 自定义
+  
+  计算属性
+  computed:对已有的数据进行计算的方式得到我们想要的数据值。优势：能够产生缓存，对于可重用的属性好数据比较友好，只会计算一次就存储到缓存中。
+  set:获取当前的属性值。
+  get(value):监视当前属性值的变化。意思是一旦值发生变化，那么就会调用set方法，并且传入最新的value值。
+  
   * 全局过滤器
     ```
     Vue.filter('过滤器名', function(value, xxx, yyy) {
