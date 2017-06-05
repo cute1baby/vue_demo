@@ -95,11 +95,17 @@
         * 可以缩写为:  :id='name'   => 将字符串'name'变成变量或者说表达式
         
         * :class
+        
           * :class="a"
+          
             * :class="{classA : isA, classB : isB}"
+            
             * :class="[classA, classB]"
+            
         * :style
+        
             :style="{color : color}"
+            
     * v-model
         * 双向数据绑定
     * v-el : 标识某个标签
