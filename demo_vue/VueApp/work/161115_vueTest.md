@@ -93,6 +93,7 @@
     * v-bind : 强制绑定解析表达式  
         * 很多属性值是不支持表达式的, 就可以使用v-bind
         * 可以缩写为:  :id='name'   => 将字符串'name'变成变量或者说表达式
+        
         * :class
           * :class="a"
             * :class="{classA : isA, classB : isB}"
