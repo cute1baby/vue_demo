@@ -3,14 +3,14 @@
 -----------------------------------------------------------------------------------------------------------------------------------
 ###Vue.js是什么?
 
->  一位华裔前Google工程师开发的前端js库
-> 一个MVVM的框架
-> 核心概念
-> 数据绑定
-> 组件
-> 与angular.js类似的是声明式开发，但性能高于angular，体积小很多, 比较适合移动端开发
-> 它本身不是全能框架, 只关注UI, 如果需要router/ajax, 可以使用对应插件或使用别的库来实现
-> 基本使用
+>  一位华裔前Google工程师开发的前端js库   
+> 一个MVVM的框架   
+> 核心概念   
+> 数据绑定   
+> 组件   
+> 与angular.js类似的是声明式开发，但性能高于angular，体积小很多, 比较适合移动端开发   
+> 它本身不是全能框架, 只关注UI, 如果需要router/ajax, 可以使用对应插件或使用别的库来实现   
+> 基本使用   
 
 ###引入vue.js
 创建Vue对象(vm), 指定选项(配置)对象   
@@ -60,9 +60,10 @@ Vue就会管理对应的标签及其子标签
 ###扩展数组
 
 对数组的常用方法进行了包装(用于数据绑定)
+```
   $remove(item) : 删除数组中对应的元素
   $set(index, ele) : 给数组中指定下标指定对应的元素
-  
+```
 ###过渡
 
 利用vue去操控css的动画
@@ -80,10 +81,13 @@ Vue就会管理对应的标签及其子标签
 *vm/组件对象
 *生命周期图   
 *主要的生命周期函数(钩子)   
+```
   created(): 启动异步任务(发送ajax请求, 启动定时器)   
   beforeDestroy(): 做一些收尾的工作 
-  
+ ``` 
+ 
 *页面指令
+```
   v-text/v-html: 指定标签体   
   v-text : 当作纯文本   
   v-html : 将value作为html标签来解析   
@@ -92,15 +96,18 @@ Vue就会管理对应的标签及其子标签
     v-else : 与v-if一起使用, 如果value为false, 将当前标签输出到页面中   
     v-show: 就会在标签中添加display样式, 如果vlaue为true, display=block, 否则是none   
     v-for : 遍历   
-    
-遍历数组 : v-for="person in persons"  $index   
-遍历对象 : v-for="value in person"  $key
+ ```
+ 
+遍历数组 :``` v-for="person in persons"  $index   ```
+遍历对象 : ```v-for="value in person"  $key```
+
 v-on : 绑定事件监听
 v-on:事件名, 可以缩写为: @事件名
-  监视具体的按键: @keyup.keyCode @keyup.enter
-  阻止事件的冒泡和事件默认行为: @click.stop  &&   @click.prevent
-  隐含对象: $event
+  监视具体的按键:<font style="color:pink;"> @keyup.keyCode @keyup.enter</font>
+  阻止事件的冒泡和事件默认行为:<font style="color:pink;"> @click.stop  &&   @click.prevent</font>
+  隐含对象:<font style="color:pink;"> $event </font>
 v-bind : 强制绑定解析表达式  (:)
+```
   很多属性值是不支持表达式的, 就可以使用v-bind
   可以缩写为: :id='name'
   :class
@@ -108,11 +115,11 @@ v-bind : 强制绑定解析表达式  (:)
   :class="{classA : isA, classB : isB}"
   :class="[classA, classB]"
   :style :style="{color : color}"
-  
+```  
 v-model(双向数据绑定)   
   v-el : 标识某个标签   
   v-el:xxx   
-  读取得到标签对象:<font style="color:pink;"> this.$els.xxx</font>   
+  读取得到标签对象:```<font style="color:pink;"> this.$els.xxx</font> ```  
         
 过滤器  
 内置:   
@@ -147,6 +154,7 @@ new Vue({
 
 ###指令
 内置:   
+```
   v-text : 更新元素的 textContent（指的是把所有的元素包括url的细节都显示出来了）   
   v-html : 更新元素的 innerHTML（指的是有链接的网址）   
   v-if : 如果为true, 当前标签才会输出到页面     
@@ -157,7 +165,8 @@ new Vue({
   v-bind : 强制绑定解析表达式, 可以省略v-bind    
   v-model : 双向数据绑定   
   v-el : 为某个元素注册一个唯一标识, vue对象通过$els属性访问这个元素对象     
-  v-cloak : 使用它防止闪现表达式, 与css配合: [v-cloak] { display: none }     
+  v-cloak : 使用它防止闪现表达式, 与css配合: [v-cloak] { display: none }   
+  ```
 ###自定义
 注册全局指令：
 ```
