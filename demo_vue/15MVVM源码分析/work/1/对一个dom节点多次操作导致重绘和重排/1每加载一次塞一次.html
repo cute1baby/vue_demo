@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="parent">
+	
+</div>
+<script>
+var parent = document.getElementById('parent');
+for(var i = 0; i < 10000; i++) {
+ var child = document.createElement('div');
+ var text = document.createTextNode(i);
+ child.appendChild(text);
+ parent.appendChild(child);
+}
+</script>
+</body>
+</html>

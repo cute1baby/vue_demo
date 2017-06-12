@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="parent"></div>
+<script>
+var parent = document.getElementById('parent');
+var i = 0, max = 10000;
+setTimeout(function addNodes() {
+	//每次以500为1份塞进去。没看懂有什么好处
+ for(var step = i + 500; i < step; i++) {
+  var child = document.createElement('div');
+  child.appendChild(document.createTextNode(i));
+  parent.appendChild(child);
+ }
+ if(i < max) {
+  setTimeout(addNodes, 0);
+ }
+}, 0);	
+</script>
+</body>
+</html>

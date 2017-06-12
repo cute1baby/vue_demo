@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="parent"></div>
+<script>
+var parent = document.getElementById('parent');
+var frag = document.createDocumentFragment();  //创建一个frag文档碎片在内存中把所有的节点放到里面去，然后在一次性插入到parent中。
+for(var i = 0; i < 10000; i++) {
+ var child = document.createElement('div');
+ var text = document.createTextNode('' + i);
+ child.appendChild(text);
+ frag.appendChild(child);
+}
+parent.appendChild(frag);
+</script>
+</body>
+</html>

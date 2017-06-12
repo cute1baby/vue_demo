@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+//4、Object.keys(obj);   返回一个由给定对象的自身可枚举属性组成的数组。
+var obj3={name:'Tom'};
+console.log(Object.getOwnPropertyDescriptor(obj3,'name'));
+//直接创建对象指定属性,内部调用defineProperty()指定数据描述符为true
+Object.defineProperty(obj3,'key',{
+	value:12345
+})
+//数据描述符如果没有指定为false.
+console.log(Object.getOwnPropertyDescriptor(obj3,'key'));
+console.log(Object.keys(obj3)); //返回给定的可枚举对象自身属性组成的数组。
+</script>
+</body>
+</html>

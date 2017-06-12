@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<ul id="fragment_test">
+	<li>test1</li>
+	<li>test2</li>
+	<li>test3</li>
+	<li>test4</li>
+	<li>test5</li>
+</ul>
+<script>
+//5、DocumentFragment:文档碎片(高效批量更新多个节点)
+var fragment = document.createDocumentFragment();  
+var child;   
+var ul = document.getElementById('fragment_test');  
+while (child = ul.firstChild){    
+	//console.log(ul.firstChild);
+	//appendChild是node的一个属性和方法，所以能这样使用。
+	fragment.appendChild(child); //将节点放进文档碎片中存储
+}    
+//将ul的第一个子元素赋值给child变量，并且如果有值的话那么会返回true。就会执行下面的append方法。
+var childNodes =fragment.childNodes;   //获取碎片中的节点
+[].slice.call(childNodes).forEach(node =>{    
+	if(node.nodeType === 1){   //判断节点是不是元素节点，如果是元素节点那么执行下面的语句。   
+		node.innerHTML ="A";     
+	}     
+}); //转换成数组   
+ul.appendChild(fragment);    //重新插回去页面去。      
+</script>
+</body>
+</html>
+
+

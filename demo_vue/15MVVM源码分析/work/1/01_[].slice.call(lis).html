@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<ul>
+	<li>1111</li>
+	<li>2222</li>
+	<li>3333</li>
+	<li>4444</li>
+	<li>5555</li>
+</ul>
+<script>
+//1、[].slice.call(lis) :将伪数组转换成真数组
+let lis=document.getElementsByTagName('li');  //伪数组,本质上是数组对象
+let lis2=[].slice.call(lis);  //让lis去调用slice方法。
+console.log(lis.forEach,lis2.forEach);	
+//这里的li作为参数，后面是function里面的内容。
+[].slice.call(lis).forEach(li => {
+	console.log(li.innerHTML);
+})
+[].slice.call(lis).forEach(function(li){
+	console.log(li.innerHTML);
+})
+</script>
+</body> -->
+</html>

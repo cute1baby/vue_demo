@@ -1,0 +1,16 @@
+<!-- <body>
+1、[].slice.call(this);  将伪数组转换成真数组
+2、node.nodeType;   得到节点类型
+3、Object.defineProperty(obj,peopertyName,{});   给对象添加属性(指定描述符)
+4、Object.keys(obj):得到对象所有(自有的)属性名的数组
+5、DocumentFragment:文档碎片(高效批量跟新多个节点)
+6、obj.hasOwnProperty(prop):判断prop是否是obj自身的属性
+-->
+
+
+
+注意：
+obj={a:123}
+之前说的Object.defineProperty(obj,b,{configurable:false,})不可对属性重新进行define的意思是我们进行
+obj.b=234;这样的设置还是可以的，但是对Object.defineProperty(obj,b,{enumerable:true,value:10,})这样设置
+就不行了。

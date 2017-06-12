@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+//3、Object.defineProperty(obj,peopertyName,{});   给对象添加属性(指定描述符)
+//用法：Object.defineProperty(obj, prop, descriptor)
+/*属性描述符：
+	数据描述符：
+		configurable: true/false 是否可配置，是否可以重新define[规定]
+		enumerable: true/false  是否可以枚举
+		value: 指定初始值  
+		writable: true/false value值是否可以修改
+	访问描述符：
+	[跟上面的valie和writable不相共存]	
+		get: 函数，用来得到当前属性值
+		set: 函数，监视属性值的变化*/
+
+let obj={}
+Object.defineProperty(obj,'name',{
+configurable:true,
+enumerable:false,
+value:"abcd",
+writable:true
+})
+console.log(obj.name);
+//获取属性描述符
+console.log(Object.getOwnPropertyDescriptor(obj,'name'));
+
+//验证enumerable:true;当enumerable:false不可打印
+for(var i in obj){
+	console.log(i,obj[i]);   //name,abcd
+}
+
+var obj2= {
+	firstName:"li",
+	lastName:"zhong"
+}
+Object.defineProperty(obj2,"fullName",{
+	configurable:false,
+	enumerable:true,
+	get (){
+		return this.firstName+' '+this.lastName;
+	},
+	set (value){
+		let names=value.split(' ');
+		this.firstName=names[0];
+		this.lastName=names[1];
+	}
+})
+//修改一下firstName和lastName
+console.log(obj2.fullName);
+obj2.firstName=" c";
+console.log(obj2.fullName);  //从firstName->fullName方向
+obj2.fullName="Kobe Bryants";
+console.log(obj2.firstName,obj2.lastName);  //从fullName->firstName方向
+</script>
+</body>
+</html>

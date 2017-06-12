@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p>{{name}}</p>
+	<p>{{lili.age}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+//vm代理了data中所有属性的操作【读和写的功能】。
+var vm =new Vue({
+	el:"#app",
+	data (){
+		return {
+			name:"lizhong",
+			lili:{
+				name:"mengxue",
+				age:22
+			}
+		}
+		
+	}
+})
+console.log(vm);
+</script>
+</body>
+</html>

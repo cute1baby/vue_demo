@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="parent"></div>
+<script>
+var parent=document.getElementById('parent');
+var Odivs=document.createElement('div'); //构建一个虚拟的节点，先把所有的节点都放在Odivs,这些数据都会在内存中进行，并且当所有的节点都加载到Odivs上，才会把Odiv挂载到parent节点上。
+//弊端是只能塞进div中，如果是其他格式比如是table之类的又该如何？
+for(var i=0;i<10000;i++){
+	var child=document.createElement('p');
+	var valueName=document.createTextNode(i);
+	child.appendChild(valueName);
+	Odivs.appendChild(child);
+}
+parent.appendChild(Odivs);
+</script>
+</body>
+</html>

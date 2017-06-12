@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+//6.  obj.hasOwnProperty(prop); 判断prop是否是obj自身的属性,返回布尔值。
+var obj5 = {name:'Tom',setName:function(){
+
+})
+console.log(obj5.hasOwnProperty('name')); //true
+console.log(obj5.hasOwnProperty('setName')); //true
+console.log(obj5.hasOwnProperty('toString')); //false
+console.log(obj5.hasOwnProperty('name1')); //false
+</script>
+</body>
+</html>
