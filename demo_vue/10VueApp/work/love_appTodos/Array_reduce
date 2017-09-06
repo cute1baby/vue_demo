@@ -1,0 +1,22 @@
+Array.reduce(oldValue,newValue);的解读
+
+var vm =new Vue({
+	el:"#app",
+	data(){
+		return {
+			myName:11111
+		}
+	},
+	watch:{
+		'myName':{
+			deep:true,
+			handler:function(val,oldVal){
+
+				console.log(val,oldVal);  //22222,11111
+			}
+		}
+	}
+})
+vm.myName = 22222
+
+此时的打印结果是22222,11111.所以val===22222，oldVal===11111。
