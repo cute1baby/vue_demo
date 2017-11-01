@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue_demo/src/router.config.js"></script>
+</head>
+<body>
+<div id="box">
+	<button @click="push">添加一个组件</button>
+	<button @click="replace">替换一个组件</button>
+	<div>
+		<router-link to="/home">主页</router-link>	
+		<router-link to="/news">新闻</router-link>	
+	</div>
+	<div>
+		<transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
+			<router-view></router-view>
+		</transition>
+
+	</div>
+</div>
+
+<script src="vue.js"></script>
+<script src="vue-router.min.js"></script>
+<script>
+//一共四个步骤,每一步骤的命名都非常有讲究。
+
+//生成组件
+var Home= {template:'<h4>我是主页详情</h4>'};
+var News= {template:`
+	<div>
+		<h4>我是新闻详情</h4>
+		<ul>
+			<li><router-link to="/news/ihzong/detail/20">著名人物李钟</router-link></li>
+			<li><router-link to="/news/baoying/detail/23">著名人物包赢</router-link></li>
+			<li><router-link to="/news/zhongyi/detail/28">著名人物中医</router-link></li>
+		</ul>
+		<div>
+			<router-view></router-view>
+		</div>
+	</div>`
+};
+var NewsDetail = {template:'<span>{{$route.params}}</span>'};
+
+//配置路由
+var routes=[
+	{path:'/home',component:Home},
+	{path:'/news',component:News,children:[
+		{path:':name/detail/:num',component:NewsDetail}
+	]},
+	{path:'*',redirect:'/home'},
+]
+
+//生成路由实例
+var router=new VueRouter({
+	routes
+})
+
+//挂载到vue上
+new Vue({
+	router,
+	el:"#box",
+	methods:{
+        push(){
+            router.push({path:'/home'})
+		},
+        replace(){
+            router.replace({path:'/news'})
+		}
+	}
+})
+
+</script>
+</body>
+</html>
