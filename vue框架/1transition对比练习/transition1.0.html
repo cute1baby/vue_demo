@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+/* p{width: 300px;height: 300px;opacity: 1;} */
+.fade-transition{
+	transition:2s all linear;
+	width: 300px;height: 300px;opacity: 1;background: red;
+}	
+.fade-enter,.fade-leave{width: 100px;height: 100px;opacity: 0;}
+</style>
+<body>
+<div id="app">
+	<input type="button" @click="show=!show" value="切换">
+
+	<div transition="fade" v-show="show">
+		<p ></p>
+	</div>
+</div>
+<script src="vue1.js"></script>
+<script>
+window.onload=function(){
+	new Vue({
+		el:"#app",
+		data(){
+			return{
+				show:true
+			}
+		}
+	})
+}
+</script>
+</body>
+</html>

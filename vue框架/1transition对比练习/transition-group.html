@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" href="animated.css">
+<style>
+p{width:300px;height:300px;background: red;margin: 50px auto 0;}
+/*.fade-enter-active,.fade-leave-active{transition:1s all linear;}
+.fade-enter-active{width: 300px;height: 300px;opacity: 1;}
+.fade-leave-active{width: 100px;height: 100px;opacity: 0;}
+.fade-enter{width: 100px;height: 100px;opacity: 0;}*/
+</style>
+<body>
+<div id="app">
+<input type="button" value="点击进行切换" @click="show=!show">
+
+	<transition-group enter-active-class="bounceInLeft" leave-active-class="bounceOutRight"
+		@befor-enter="beforeEnter"
+		@enter="enter"
+		@after-enter="afterEnter"
+		@befor-leave="beforeLeave"
+		@leave="leave"
+		@after-leave="afterLeave"
+	>
+		<p v-show="show" class="animated" :key="1"></p>
+		<p v-show="show" class="animated" :key="2"></p>
+	</transition-group>	
+</div>	
+<script src="vue.js"></script>
+<script>
+window.onload=function(){
+	new Vue({
+		el:"#app",
+		data(){
+			return {
+				show:false
+			}
+		},
+		methods:{
+			beforeEnter(el){
+				console.log('进入之前');
+			},
+			enter(el){
+				console.log('进入过程中');
+			},
+			afterEnter(el){
+				console.log('进入之后');
+				el.style.background="blue";
+			},
+			beforeLeave(el){
+				console.log('出去之前');
+			},
+			leave(el){
+				console.log('出去的时候');
+			},
+			afterLeave(el){
+				console.log('出去之后');
+				el.style.background="red";
+			}
+		}
+	})
+}
+</script>
+</body>
+</html>
