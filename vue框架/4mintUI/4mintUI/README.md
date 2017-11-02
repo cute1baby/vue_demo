@@ -1,4 +1,4 @@
-# mintui
+# mintui(引入组件的时候还有一些问题)
 
 > A Vue.js project
 
