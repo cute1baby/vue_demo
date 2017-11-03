@@ -5,10 +5,11 @@ vueX:是对数据的集中管理
 main.js
 import store from './store'    //这样引入store
 new Vue({
-    store,   //同时将所接受的值传入到App.vue中
+    store,   //同时将所接受的值挂载到App.vue中
   el: '#app',
   render: h => h(App)
 })
+
 =================================================================
 #接着我们看store里面的内容
 首先引入vue和vuex两个以依赖文件。
@@ -61,6 +62,7 @@ export default new Vuex.Store({
 	actions,
 	getters
 });
+
 ============================================================================
 
 App.vue部分：
