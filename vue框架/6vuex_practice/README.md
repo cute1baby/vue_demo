@@ -1,7 +1,7 @@
 vueX:是对数据的集中管理
 =====================================================================================
 
-执行顺序是：
+#执行顺序是：
 main.js
 import store from './store'    //这样引入store
 new Vue({
@@ -11,6 +11,7 @@ new Vue({
 })
 
 =================================================================
+ 
 #接着我们看store里面的内容
 首先引入vue和vuex两个以依赖文件。
 import Vue from 'vue';
@@ -20,7 +21,7 @@ Vue.use(Vuex);
 
 const state={
     counter:10   //里面存储的是全局的数据
-}
+} 
 
 //方法中有commit和state值两个参数。
 const actions = {
@@ -65,7 +66,7 @@ export default new Vuex.Store({
 
 ============================================================================
 
-App.vue部分：
+#App.vue部分：
 import {mapGetters,mapActions} from 'vuex';   //vuex自带额的两个方法
 methods:mapActions([   //将方法收集起来,这里跟action对应起来的[这里用来对应action定义的这些方法]
   'increate',
