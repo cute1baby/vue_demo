@@ -1,14 +1,14 @@
-# vueX:是对数据的集中管理
+vueX:是对数据的集中管理
 =====================================================================================
 
-`执行顺序是：
+执行顺序是：
 main.js
 import store from './store'    //这样引入store
 new Vue({
     store,   //同时将所接受的值传入到App.vue中
   el: '#app',
   render: h => h(App)
-})`
+})
 =================================================================
 #接着我们看store里面的内容
 首先引入vue和vuex两个以依赖文件。
@@ -52,7 +52,7 @@ const getters = {
     getOdd(state){
         return  state.counter%2==0?'偶数':'奇数';
     }
-}
+}  
 
 //需要导出Store对象
 export default new Vuex.Store({
