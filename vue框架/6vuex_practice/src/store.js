@@ -29,7 +29,7 @@ const actions = {
     }
 }
 
-//处理数据的变化(数据的具体逻辑)
+//处理数据的变化(类似methods定义函数)
 const mutations = {
     increate(state){
         state.counter++;
@@ -48,6 +48,7 @@ const getters ={
     }
 }
 
+//[actions,mutations,getters]回调里都可以返回一个state参数。
 //将上面的值暴露出去给main.js使用
 export default new Vuex.Store({
     state,
