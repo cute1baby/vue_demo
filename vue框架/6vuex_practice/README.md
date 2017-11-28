@@ -85,7 +85,8 @@ export default new Vuex.Store({
 ============================================================================
 
 #App.vue部分：
-```
+
+
 import {mapGetters,mapActions} from 'vuex';   //vuex自带额的两个方法
 methods:mapActions([   //将方法收集起来,这里跟action对应起来的[这里用来对应action定义的这些方法]
   'increate',
@@ -93,7 +94,7 @@ methods:mapActions([   //将方法收集起来,这里跟action对应起来的[�
   'oddDecreate',
   'asynIncreate'
 ]),
-computed:mapGetters([   //需要监听的写在模板中的数据,这里是跟getters相对应的。
+computed:mapGetters([           //需要监听的写在模板中的数据,这里是跟getters相对应的。
   'counter',
   'getOdd'
 ])
