@@ -98,7 +98,7 @@ computed:mapGetters([           //需要监听的写在模板中的数据,这里
   'counter',
   'getOdd'
 ])
-```
+
 最后总结一下这几个单词的意思：
 (1)state：{状态}
 (2)actions：{行动}
