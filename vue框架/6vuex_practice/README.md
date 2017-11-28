@@ -15,6 +15,7 @@ point:
 ============================================================
 
 #执行顺序是：
+```
 main.js
 import store from './store'    //这样引入store
 new Vue({
@@ -22,11 +23,12 @@ new Vue({
   el: '#app',
   render: h => h(App)
 })
-
+```
 =================================================================
  
 #接着我们看store里面的内容
 首先引入vue和vuex两个以依赖文件。
+```
 import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
@@ -48,8 +50,9 @@ const actions = {
     }
     。。。
 }
-
+```
 //处理数据的逻辑(值得变化)
+```
 const mutationns = {
     increate(state){
         state.counter++;
@@ -58,8 +61,9 @@ const mutationns = {
         state.counter--;
     }
 }
-
+```
 //监听获取变化的值
+```
 const getters = {
     counter(state){
         return  state.counter;
@@ -68,18 +72,20 @@ const getters = {
         return  state.counter%2==0?'偶数':'奇数';
     }
 }  
-
+```
 //需要导出Store对象
+``
 export default new Vuex.Store({
 	state,
 	mutations,
 	actions,
 	getters
 });
-
+```
 ============================================================================
 
 #App.vue部分：
+```
 import {mapGetters,mapActions} from 'vuex';   //vuex自带额的两个方法
 methods:mapActions([   //将方法收集起来,这里跟action对应起来的[这里用来对应action定义的这些方法]
   'increate',
@@ -91,7 +97,7 @@ computed:mapGetters([   //需要监听的写在模板中的数据,这里是跟ge
   'counter',
   'getOdd'
 ])
-
+```
 最后总结一下这几个单词的意思：
 (1)state：{状态}
 (2)actions：{行动}
