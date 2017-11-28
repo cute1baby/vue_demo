@@ -105,5 +105,31 @@ computed:mapGetters([           //需要监听的写在模板中的数据,这里
 (3)mutations：{突变}
 (4)getters：{获得者}
 
-
-
+```
+#看下下面的两种定义的特别方式：
+```
+methods: {
+  ...mapActions([
+    'foo',
+    'bar'
+  ])，
+  nextItem(){
+	if (this.choosedNum !== null) {
+		this.choosedNum = null;
+		//保存答案, 题目索引加一，跳到下一题
+		this.addNum(this.choosedId)
+	}else{
+		alert('您还没有选择答案哦')
+	}
+   }
+}
+=>则相当于这样进行定义：存在于既有mutations中定义的函数，也有自定义的函数时会用这种写法。
+methods: {
+  foo(...args) {
+    return this.$store.dispatch.apply(this.$store, ['foo'].concat(args))
+  }
+  bar(...args) {
+    return this.$store.dispatch.apply(this.$store, ['bar'].concat(args))
+  }
+}
+```
