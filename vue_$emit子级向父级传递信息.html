@@ -1,0 +1,47 @@
+ps:App.vue 父组件
+　 Hello.vue 子组件
+ 
+
+<!--App.vue  :-->
+
+<template>
+　　<div id="app">
+　　　　<hello @newNodeEvent="parentLisen" />
+　　</div>
+</template>
+
+<script>
+    import hello from './components/Hello'
+    export default {
+        name: 'app',
+        'components': {
+            hello
+        },
+        methods: {
+            parentLisen(evtValue) {   //将【我是子元素传过来的】这句话传到父级组件中。
+                //evtValue 是子组件传过来的值
+                alert(evtValue)
+            }
+        }
+    }
+</script>
+
+
+<!--Hello.vue  :-->
+
+<template>
+　　<div class="hello">
+　　　　<input type="button" name="" id="" @click="chilCall()" value="子调父" /> 
+　　</div>
+</template>
+
+<script>
+    export default {
+        name: 'hello',
+        'methods': {
+            chilCall(pars) {
+                this.$emit('newNodeEvent', '我是子元素传过来的')
+            }
+        }
+    }
+</script>

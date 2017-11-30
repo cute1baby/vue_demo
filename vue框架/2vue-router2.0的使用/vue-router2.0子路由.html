@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="vue_demo/src/router.config.js"></script>
 </head>
 <body>
 <div id="box">
@@ -21,7 +20,9 @@
 	</div>
 </div>
 
-<script src="vue.js"></script>
+<!--<script src="vue.js"></script>
+<script src="vue-router.min.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
 <script src="vue-router.min.js"></script>
 <script>
 //一共四个步骤,每一步骤的命名都非常有讲究。
@@ -63,10 +64,10 @@ new Vue({
 	el:"#box",
 	methods:{
         push(){
-            router.push({path:'/home'})
+            router.push({path:'/home'});    //相当于this.$router.push('home');
 		},
         replace(){
-            router.replace({path:'/news'})
+            router.replace({path:'/news'});
 		}
 	}
 })
