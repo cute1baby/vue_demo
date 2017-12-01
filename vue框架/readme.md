@@ -1,4 +1,4 @@
-##State
+#State
 
 > * State负责存储整个应用的状态数据，一般需要在使用的时候在跟节点注入store对象，后期就可以使用**this.$store.state**直接获取状态
 
