@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	[v-cloak]{display:none;}
+</style>
+<body>
+<div id="app">
+	<input type="text" v-model="msg" v-cloak>
+	<ul v-show="msg.length>0">
+		<li v-for="todo in todos|filterBy msg in 'name'|orderBy 'id'">{{todo.name}}</li>
+	</ul>
+</div>
+<script src="vue.js"></script>
+<script>
+var vm =new Vue({
+	el:"#app",
+	data() {
+		return {
+			msg:"",
+			todos:[{
+				name:"潘思怡",id:11
+			},{
+				name:"董明珠",id:14
+			},{
+				name:"雷军",id:18
+			},{
+				name:"徐晓金",id:5
+			},{
+				name:"李思成",id:3
+			}]
+		}
+	},
+
+})
+</script>
+</body>
+</html>
