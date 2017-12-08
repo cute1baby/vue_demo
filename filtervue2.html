@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<input type="text" v-model="msg">
+	<ul>
+		<li v-for="item in lists">
+			{{item.info}} 
+		</li>
+	</ul>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.0.0-rc.6/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data(){
+			return {
+				msg:'',
+				arr:[
+					{id:1,info:'111'},
+					{id:2,info:'222'},
+					{id:1,info:'121212'},
+					{id:3,info:'333'}
+				]
+			}
+		},
+		computed:{
+	      lists:function(){  //通过
+	        var arr1 = [];
+	        var that = this;
+	        this.arr.forEach((val)=>{  //vue2的过滤写法
+	          if(val.info.indexOf(that.msg)>-1){
+	          	arr1.push(val);
+	          }
+	        })
+	        return arr1;
+	      }
+		}
+	})
+</script>
+</body>
+</html>
+
+<li v-for="item in lists | filterBy msg in 'info' | oderBy id ">
+    {{item.info}} 
+  </li>
+  进行筛选
