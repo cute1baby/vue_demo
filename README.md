@@ -6,6 +6,13 @@
  ```
  **axios**不存在这种use的方法，切记切记。
  **filterBy过滤方法已经在vue2被废弃了，现在filter已经不存在内部过滤器。
+ 
+ **
+ <font style="color:red;">vue组间标签名不能是驼峰式，属性名不能是驼峰，事件名不能是驼峰。如下所示:
+    <child-one @dede-show="setName"></child-one>
+    <child-two :dede-con="setName1"></child-two>
+ </font>
+ 
  ```
 
 Vue.js是什么?
