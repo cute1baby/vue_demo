@@ -12,7 +12,12 @@
     <child-one @dede-show="setName"></child-one>
     <child-two :dede-con="setName1"></child-two>
  </font>
- 
+ 这里有一个文件是子父级之间的信息传递的文件，这个文件中存在的模板中可以得到
+ <template>
+   <div>
+    //这里存在多个标签的时候外面必须套一个外层标签进行包裹。
+   </div>
+ </template>
  ```
 
 Vue.js是什么?
