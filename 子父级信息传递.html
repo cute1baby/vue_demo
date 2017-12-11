@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p>{{parentMag}}--父</p>
+	<p>{{newObj.title}}--父</p>
+	<child-one @set-msg="newStyle" :parent-mag="parentMag"></child-one>	
+	<child-two :new-obj="newObj"></child-two>
+</div>
+<template id="childone">
+	<div>
+		<p>{{childMsg1}}--子1</p>
+		<p>{{parentMag}}--子1</p>
+		<button @click="send">发送</button>
+	</div>
+</template>
+<template id="childtwo">
+	<div>
+		<p>{{childMsg2}}--子2</p>
+		<p>{{newObj.title}}--子2</p>
+		<button @click="show">展示</button>
+	</div>
+</template>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+<script>
+new Vue({
+	el:"#app",
+	data(){
+		return{
+			parentMag:'这是父元素',
+			newObj:{
+				'title':'这是父元素的标题'
+			}
+		}
+	},
+	methods:{
+		newStyle(msg){
+			this.parentMag = msg;
+		}
+	},
+	components:{
+		'child-one':{
+			template:'#childone',
+			props:['parentMag'],
+			data(){
+				return {
+					childMsg1:'这是child1元素'
+				}
+			},
+			methods:{
+				send(){
+					this.$emit('set-msg','子元素修改父级别的值');
+					this.parentMag='这是父组件给子组件1传的值,在子组件进行修改，结果报错，这是针对属性的单向数据流,不会导致父级组件值改变。对象跟属性传递的差别'
+				}
+			}
+		},
+		'child-two':{
+			template:'#childtwo',
+			props:['newObj'],
+			data(){
+				return {
+					childMsg2:'这是child2元素'
+				}
+			},
+			methods:{
+				show(){
+					this.newObj.title = '这是子级组件修改接收的对象属性值，在子组件2修改会导致父级组件的值也改变。对象跟属性传递的差别'
+				}
+			}
+			
+		}
+	}
+})	
+</script>
+</body>
+</html>

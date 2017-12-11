@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<input type="text" v-model="msg">
+	<ul>
+		<li v-for="item in list">
+			{{item.info}}
+		</li>
+	</ul>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+<script>
+new Vue({
+	el:"#app",
+	data(){
+		return {
+			msg:"",
+			array:[
+				{id:1,info:'newTo111'},
+				{id:2,info:'newTo222'},
+				{id:3,info:'newTo333'}
+			]
+		}
+	},
+	computed:{
+		list(){
+			var newArr = [];
+			var that = this;
+			this.array.forEach(function(item){
+				if(item.info.indexOf(that.msg)>-1){
+					newArr.push(item);
+				}
+			})
+			return newArr;
+		}
+	}
+})	
+</script>
+</body>
+</html>
