@@ -35,12 +35,12 @@
                     return this.checked1 || this.checked2
                 },
                 set(val){
-                    this.checked1 = this.checked2 =val
+                    //this.checked1 = this.checked2 = val
+                    this.checked2 = val
                 }
             },
             diStatus(){
                 return !this.valueSwitch;  //两种方式都可以
-
             }
         },
         mounted(){
