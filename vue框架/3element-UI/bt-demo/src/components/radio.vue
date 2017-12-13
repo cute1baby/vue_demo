@@ -12,6 +12,7 @@
                 <template slot="title">
                     <el-switch v-model="valueSwitch"></el-switch>
                 </template>
+                <p>现在一共选中了{{checkedNum}}项</p>
                 <el-checkbox v-model="checked1" :disabled="diStatus">多选框1</el-checkbox>
                 <el-checkbox v-model="checked2" :disabled="diStatus">多选框2</el-checkbox>
             </el-collapse-item>
@@ -41,6 +42,15 @@
             },
             diStatus(){
                 return !this.valueSwitch;  //两种方式都可以
+            },
+            checkedNum(){
+                let getArr=[];
+                [this.checked1,this.checked2].forEach((item)=>{
+                    if(item){
+                        getArr.push(item);
+                    }
+                })
+                return getArr.length;
             }
         },
         mounted(){
