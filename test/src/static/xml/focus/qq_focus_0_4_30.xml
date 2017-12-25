@@ -1,0 +1,11 @@
+<?xml version="1.0"?> 
+<resultset> 
+     <row>
+         <field name="keyword">1106</field>
+         <field name="counter">40</field>
+     </row>
+     <row>
+         <field name="keyword">W2</field>
+         <field name="counter">8</field>
+     </row>
+</resultset>
