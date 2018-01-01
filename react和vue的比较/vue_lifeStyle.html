@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<p>{{msg}}</p>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.0.1/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data(){
+			return {
+				msg:'hello'
+			}
+		},
+		beforeCreate(){
+			console.log('========beforeCreate创建前状态==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+		created(){
+			console.log('========create实例创建完成==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+			setTimeout(()=>{
+				this.msg = '轻轻'
+			},1000)
+		},
+		beforeMount(){
+			console.log('========mount挂载前状态==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+		mounted(){
+			console.log('========mount挂载结束==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+
+		beforeUpdate(){
+			console.log('========update修改前状态==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+		updated(){
+			console.log('========update修改后状态==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+
+		beforeDestory(){
+			console.log('========destory销毁前状态==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+		destoryed(){
+			console.log('========destory销毁后状态==========');
+			console.log("this.$el="+this.$el);
+			console.log("this.$data="+this.$data);
+			console.log("this.$msg="+this.msg);
+		},
+	})
+
+/*结论是：
+beforecreated：el和data 并未初始化 
+created:完成了 data数据的初始化，el没有 
+beforeMount：完成了 el 和 data 初始化 
+mounted ：完成挂载
+
+然后beforeMount与mounted有什么区别呢？
+在beforeMount的时候，页面上还是显示`<p>{{msg}}</p>`,说明此时还没有完成页面渲染，而虚拟DOM思想是把页面的坑位先占据，然后在mounted后把数据渲染进去。
+
+beforeUpdate,updated两个之间没有多大的区别,两者的data.msg都改变了,并且全都渲染到了页面上。
+
+beforeDestory，
+destoryed没有什么好讲的。app.$destroy(),将对应的页面节点移除，移除之后再对进行操作和修改都不会有什么变化了。
+*/
+</script>
+</body>
+</html>
