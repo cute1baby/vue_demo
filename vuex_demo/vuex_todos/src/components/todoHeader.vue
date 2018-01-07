@@ -20,6 +20,7 @@
             title,
             complete: false
           }
+          //调用vuex中的往数组中插入数据的方法
           this.$store.dispatch('addTodo', todo)
           this.title = null
         }

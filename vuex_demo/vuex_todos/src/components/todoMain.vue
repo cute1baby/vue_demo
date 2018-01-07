@@ -20,7 +20,7 @@
       }
     },
 
-    watch: {
+    watch: {//只有在此处能出现和会用到完整的todos.
       todos: {// 深度监视todos, 一旦有变化立即保存
         handler: storageUtil.save,
         deep: true

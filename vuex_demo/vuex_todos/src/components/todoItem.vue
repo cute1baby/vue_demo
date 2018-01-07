@@ -5,7 +5,7 @@
       <input type="checkbox" v-model="todo.complete"/>
       <span>{{todo.title}}</span>
     </label>
-    <button class="btn btn-danger" v-show="isShown" @click="deleteItem">删除</button>
+    <button class="btn btn-danger" v-if="isShown" @click="deleteItem">删除</button>
   </li>
 </template>
 
@@ -29,7 +29,7 @@
         }
       },
       deleteItem () {
-        const {todo, deleteTodo, index} = this
+        const {todo, index} = this
         if (window.confirm(`确定删除${todo.title}的评论吗?`)) {
           // deleteTodo(index)
           this.$store.dispatch('removeTodo', index)
@@ -62,7 +62,6 @@
 
   li button {
     float: right;
-    display: none;
     margin-top: 3px;
   }
 

@@ -17,6 +17,7 @@
   export default {
     created () {
       // 模拟异步读取数据
+      //作用是将localstorage中的数据放到vuex的state中
       this.$store.dispatch('readTodo')
     },
 
