@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <div class="hello">
       <ul>
@@ -34,6 +33,3 @@ ul {
 }
 li {margin-bottom:20px;}
 </style>
-=======
-
->>>>>>> origin/master
