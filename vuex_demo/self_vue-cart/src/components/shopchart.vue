@@ -3,27 +3,20 @@
       <ul>
         <li v-for="(item,index) in list" :key="index">
           <span>{{item.id}}-&nbsp;{{item.title}}&nbsp;-￥{{item.price}}元</span>
-          <button @click="addToChart" class="btnSet">加入购物车</button>
+          <button @click="addTochart(item)" class="btnSet" :disabled="item.invatal===0">加入购物车</button>
         </li>
       </ul>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 export default {
-  data () {
-    return {
-      msg: ''
-    }
-  },
   computed: {
     ...mapState(['list'])
   },
   methods: {
-    addToChart () {
-      console.log(111)
-    }
+    ...mapActions(['addTochart'])
   }
 }
 </script>
