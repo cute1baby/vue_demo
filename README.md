@@ -9,6 +9,12 @@
  import axios from 'axios'
 Vue.prototype.$http = axios
 在组件中这样使用:this.$http.axios=...
+
+
+const router = new VueRouter({
+  mode: 'history',   //清除地址栏中的#hash符号
+  routes
+})
  ```
  
  **filterBy过滤方法已经在vue2被废弃了，现在filter已经不存在内部过滤器。
