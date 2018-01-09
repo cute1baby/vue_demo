@@ -5,6 +5,12 @@
  那就是:
  ```
  **axios**不存在这种use的方法，切记切记。
+ ```在main.js中这样设置:
+ import axios from 'axios'
+Vue.prototype.$http = axios
+在组件中这样使用:this.$http.axios=...
+ ```
+ 
  **filterBy过滤方法已经在vue2被废弃了，现在filter已经不存在内部过滤器。
  
  **
