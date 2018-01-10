@@ -10,6 +10,9 @@
 Vue.prototype.$http = axios
 在组件中这样使用:this.$http.axios=...
 
+配合路由做一些这样的操作：
+<router-link :to="`detaile/${item.id}`"></router-link>
+<router-link :to="'detaile/'+item.id"></router-link>
 
 const router = new VueRouter({
   mode: 'history',   //清除地址栏中的#hash符号
