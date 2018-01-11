@@ -1,5 +1,6 @@
 <template>
   <div>
+    <appbg/>
     <div class="view page-transition">
       <div id="container">
         <article class="article" v-for="(item,index) in listAtr" :key="index">
@@ -14,42 +15,43 @@
             <p>{{item.description}}</p>
           </section>
           <footer>
-            <a @click="articleDetail(item.id)">阅读全文</a>
+            <router-link :to="'article/'+item.id">阅读全文</router-link>
+            <!--<router-link :to="`article/${item.id}`">阅读全文</router-link>-->
           </footer>
         </article>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
-    export default {
-      data () {
-        return {
-          listAtr: []
-        }
-      },
-      mounted () {
-        const fileGet = '/static/config/page_config.json'
-        // 记住如果不适用箭头操作那么this就不存在
-        this.$http.get(fileGet)
-          .then((result) => {
-            if (result && result.status === 200) {
-              if (result.data.length > 0) {
-                this.listAtr = result.data
-              }
-            }
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      },
-      methods: {
-        articleDetail (index) {
-          this.$router.push('/article/' + index)
-        }
+  import appbg from './appbg'
+  export default {
+    data () {
+      return {
+        listAtr: []
       }
+    },
+    mounted () {
+      const fileGet = '/static/config/page_config.json'
+      // 记住如果不适用箭头操作那么this就不存在
+      this.$http.get(fileGet)
+        .then((result) => {
+          if (result && result.status === 200) {
+            if (result.data.length > 0) {
+              this.listAtr = result.data
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    components: {
+      appbg
     }
+  }
 </script>
 
 <style scoped>

@@ -5,13 +5,14 @@ import Other from '../components/other.vue'
 export default [
   {
     path: '/',
-    component: TodoList,
-    children: [
-      {
-        path: 'article/:id',
-        component: todo
-      }
-    ]
+    component: TodoList
   },
-  {path: '/other', component: Other}
+  {
+    path: '/article/:id',
+    component: todo
+  },
+  {
+    path: '/other',
+    component: Other
+  }
 ]

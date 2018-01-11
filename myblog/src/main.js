@@ -6,7 +6,7 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 import routes from './routes/index'
 import '../static/reset.css'
-import '../static/style.css'
+import '../static/markdown.css'
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -15,6 +15,7 @@ const router = new VueRouter({
   routes
 })
 Vue.prototype.$http = axios
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
