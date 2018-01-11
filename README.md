@@ -14,6 +14,11 @@ Vue.prototype.$http = axios
 <router-link :to="`detaile/${item.id}`"></router-link>
 <router-link :to="'detaile/'+item.id"></router-link>
 
+$router和$route的区别。这个用两个例子来弄一下就清楚了：
+this.$router.push({path:'/item'})     //设置路由的时候使用router
+this.$route.params.id               //获取参数的时候使用route
+
+
 const router = new VueRouter({
   mode: 'history',   //清除地址栏中的#hash符号
   routes
