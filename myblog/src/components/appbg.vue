@@ -1,5 +1,5 @@
 <template>
-    <div id="bg">
+    <div id="bg" ref="bglog">
       <div id="covers"></div>
       <p>
         什么叫实践派？<br><i>什么都没正经学过，概念都没搞懂</i><br>却偏偏能弄出点动静来

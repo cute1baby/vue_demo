@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <header id="header">
-      <div id="position"></div>
+    <header id="header" ref="header">
+      <div id="position" ref="position"></div>
       <nav>
         <ul>
           <li>
-            <router-link to="/" class="v-link-active">首页</router-link>
-            <router-link to="/other">Demo</router-link>
+            <router-link to="/" :class="{color666:show,colorfff:!show}">首页</router-link>
+            <router-link to="/other" :class="{color666:show,colorfff:!show}">Demo</router-link>
           </li>
         </ul>
         <div class="my-info">
@@ -26,13 +26,34 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: 'app',
   data () {
     return {
       imgShow: false,
-      scrollTop: 0
+      show: false
     }
+  },
+  computed: {
+    ...mapState['scrollTopNum']
+  },
+  methods: {
+    scrollSet () {
+      this.scrollTopNum = document.body.scrollTop || document.documentElement.scrollTop
+      this.$refs.position.style.opacity = this.scrollTopNum / 600
+      if (this.scrollTopNum > 480) {
+        this.$refs.header.style.color = '#666'
+        this.$refs.position.style.opacity = 1
+        this.show = true
+      } else {
+        this.$refs.header.style.color = '#fff'
+        this.show = false
+      }
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.scrollSet)
   }
 }
 </script>
@@ -43,13 +64,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.color666{color:#666;}
+.colorfff{color:#fff;}
 #header{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 66px;
-  color: #666;
+  color:#fff;
   z-index: 9999;
   transition: all .3s;
 }
@@ -59,8 +82,8 @@ export default {
   height: 66px;
   left:0;
   top:0;
-  background:#fff;
-  opacity:0.7;
+  background:#FAFFF1;
+  opacity:0;
 }
 #header nav{
   position: relative;
@@ -80,7 +103,6 @@ export default {
   display: inline-block;
   padding: 0 12px;
   white-space: nowrap;
-  color: #666;
 }
 #header nav .my-info{
   position: absolute;
