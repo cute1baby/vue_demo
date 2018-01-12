@@ -37,7 +37,10 @@ this.$route.params.id               //获取参数的时候使用route
       }
     }
  
- 
+ var obj = {'a':'123','b':'345'};
+console.log(Object.keys(obj));  //['a','b']
+Object.keys()   //这个方法的作用就是获取整个对象的属性名。
+
 
 设置样式：
 <div :style="{ 'opacity': !editableCheckNum ? 0.5 : 1 }">555</div>      // 三目运算符
@@ -49,6 +52,11 @@ const router = new VueRouter({
 })
  ```
  
+ 
+ 
+ 
+ 
+ --------------------------------------------------------------------------------------------------------
  **filterBy过滤方法已经在vue2被废弃了，现在filter已经不存在内部过滤器。
  
  **
