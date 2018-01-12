@@ -18,6 +18,27 @@ $router和$route的区别。这个用两个例子来弄一下就清楚了：
 this.$router.push({path:'/item'})     //设置路由的时候使用router
 this.$route.params.id               //获取参数的时候使用route
 
+
+#我的博客中有一个例子：
+ * < 就是在设置滚动条的时候，需要动态的修改该header上的颜色和背景,此时是一个渐变的过程。所以在监听window的scroll事件的时候，需要采用的是这样的逻辑：
+ * < 首先mounted里面肯定需要做一些事情,mounted里面最好做些什么事呢？做监听。[监听只有写在vue的生命周期函数里面才是最好的选择]
+ window.addEventListener('scroll',this.scrollFun);
+ * < 在methods中写对应的函数,所以在window每次做scroll的时候就能执行该函数。
+ scrollSet () {
+      this.scrollTopNum = document.body.scrollTop || document.documentElement.scrollTop
+      this.$refs.position.style.opacity = this.scrollTopNum / 600
+      if (this.scrollTopNum > 480) {
+        this.$refs.header.style.color = '#666'
+        this.$refs.position.style.opacity = 1
+        this.show = true
+      } else {
+        this.$refs.header.style.color = '#fff'
+        this.show = false
+      }
+    }
+ 
+ 
+
 设置样式：
 <div :style="{ 'opacity': !editableCheckNum ? 0.5 : 1 }">555</div>      // 三目运算符
 <router-link to="/other" :class="{color666:show,colorfff:!show}">Demo</router-link>   //类名绑定
