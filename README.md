@@ -8,6 +8,9 @@
   mode: 'history',
   routes
 })
+export default new Vuex.Store({
+  state
+})
  ```
  **axios**不存在这种use的方法，切记切记。
  ```在main.js中这样设置:
