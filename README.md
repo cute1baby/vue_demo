@@ -1,7 +1,15 @@
 # vue_demo
 这是关于学习vue的一些例子，供自己学习与参考
 -----------------------------------------------------------------------------------------------------------------------------------
- > 特别需要注意的一个问题是：无论是VueResource,还是VueRouter都可以使用Vue.use(VueRouter)的方式。但是有一个不行
+# 如果在项目中安装ruby并且能够让他运行：
+一共有三个步骤：
+（1）配置ruby环境。网址在这里：https://www.w3cplus.com/sassguide/，并且在ruby上安装上sass
+（2）在vue项目上安装node-sass,sass-loader.输入npm install node-sass --save-dev ,npm install sass-loader --save-dev
+ (3) 在style标签内添加lang='scss'.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+> 特别需要注意的一个问题是：无论是VueResource,还是VueRouter都可以使用Vue.use(VueRouter)的方式。但是有一个不行
  那就是:
  
  const router = new VueRouter({
