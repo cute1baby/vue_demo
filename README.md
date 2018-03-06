@@ -9,13 +9,13 @@
   > * npm install --save-dev sass-loader
   > * 同时sass-loader依赖于node-sass,所以执行以下语句：npm install --save-dev node-sass
 （2）在build文件夹下的webpack.base.conf.js的rules里面添加以下配置：可以放到 test:/\.js$/之后
-  ```
+  `
   {
     test: /\.sass$/,
     loaders: ['style', 'css', 'sass']
   }
   
-  ```
+  `
   
  (3) 在.vue组件中的style标签内添加lang='scss'.
 
