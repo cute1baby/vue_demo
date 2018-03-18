@@ -2,7 +2,10 @@
 这是关于学习vue的一些例子，供自己学习与参考
 -------------------------------------------------------------------------------------------------
 ```
-v-html='content'  这里为什么要使用v-html呢？是需要转译content中的一些html转译字符。
+1) v-html='content'  这里为什么要使用v-html呢？是需要转译content中的一些html转译字符。
+2)this.$refs.list.$el.style.top = `${this.$refs.bgImg.clientHeight}px`
+这里的this.$refs.list.$el表示指向list这个html Element.
+
 
 ### 正确配置sass的方法：
 
