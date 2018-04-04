@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin: 0;padding: 0;}
+#app{margin:100px auto 0;}
+.out{overflow: hidden;}
+ul,li{list-style: none;}
+ul{float: left;}
+li,p{float: left;margin:0 5px;padding:5px;border: 1px solid #000;cursor: pointer;}
+.active{background: #000;color: #fff;}
+</style>
+<body>
+<div id="app">
+	<span>{{message}}</span>
+	<hr>
+	<div class="out">
+		<p ref="pleft" @click="goLeft()">上一页</p>
+		<ul ref="ulcenter">
+			<li v-for="(item,index) in showArr" :key="index" @click="toggle(index)" :class="{active:currentIndex===index}">
+				{{index+1}}
+			</li>
+		</ul>
+		<p ref="pright">下一页</p>	
+	</div>
+	<h6>{{showArr}}</h6>
+</div>
+<script src="vue.js"></script>
+<script>
+new Vue({
+	el:'#app',
+	data () {
+		return {
+			message:34,
+			newArray:[34,2,35,6,76,98,54,43,65,5344,5,3,24,464,565],
+			currentIndex:0,
+			pages:{
+				visiblePages:5
+			}
+		}
+	},
+	computed:{
+		showArr(){
+			let firstPage = this.currentIndex - Math.floor(this.pages.visiblePages / 2)
+			let lastPage = this.currentIndex + Math.floor(this.pages.visiblePages / 2)
+			if(firstPage <1){
+				firstPage =1
+				lastPage = Math.min(this.pages.visiblePages,this.newArray.length)
+			}
+			if(lastPage > this.newArray.length){
+				lastPage = this.newArray.length
+				firstPage = this.newArray.length - this.pages.visiblePages
+				if(firstPage <1){
+					firstPage = 1
+				}
+			}
+			let arr1 = this.newArray.filter((item,index)=>{
+				return index<this.pages.visiblePages
+			})
+			return arr1
+		}
+	},
+	methods:{
+		toggle(index){
+			this.currentIndex = index;
+			this.message = this.newArray[index]
+		},
+		goLeft(){
+			
+		}
+	}
+})
+
+</script>
+</body>
+</html>
