@@ -21,10 +21,10 @@
 vue2.0              描述
 beforeCreate    组件实例刚被创建,组件属性计算之前, 如data属性等 。如何使用呢？【举个例子，可以在这里加上一个loading事件。】
 
-created        组件实例创建完成,属性已绑定,但DOM还没有完成。【在这结束loading，还做一些初始化，实现函数自执行 】
+created        组件实例创建完成,但DOM节点还没有完成。【在这结束loading，还做一些初始化，实现函数自执行 】
 
 beforeMount      模版编译/挂载之前
-mounted        模版编译/挂载之后(不保证组件已在document中)【在这发起后端请求，拿回数据，配合路由钩子做一些事情 。对应react的componentWillReceiveProps函数】
+mounted        模版编译/挂载之后，节点渲染完成(不保证组件已在document中)【在这发起后端请求，拿回数据，配合路由钩子做一些事情 。对应react的componentWillReceiveProps函数】
 
 beforeUpdate     组件更新之前
 updated     	组件更新之后
