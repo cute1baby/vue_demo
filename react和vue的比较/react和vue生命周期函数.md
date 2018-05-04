@@ -1,7 +1,7 @@
 # react生命周期函数：
 > * Mounting：已插入真实 DOM
 > * Updating：正在被重新渲染
-> * Unmounting：已移出真实 DOM[]
+> * Unmounting：已移出真实 DOM
 
 ```
 **componentWillMount**:在渲染前调用,在客户端也在服务端。[在render之前]
@@ -17,6 +17,9 @@
 
 
 # vue生命周期函数：
+
+> * created：实例化了Vue对象，此时能够拿到data里面的数据，但是DOM节点和属性还拿不到。此时可以做向后台请求数据的操作
+> * mounted：此时data和DOM节点都拿到了。
 ```
 vue2.0              描述
 beforeCreate    组件实例刚被创建,组件属性计算之前, 如data属性等 。如何使用呢？无法在审查元素中打印出来【举个例子，可以在这里加上一个loading事件。】
