@@ -21,10 +21,11 @@
 vue2.0              描述
 beforeCreate    组件实例刚被创建,组件属性计算之前, 如data属性等 。如何使用呢？无法在审查元素中打印出来【举个例子，可以在这里加上一个loading事件。】
 
-created        组件实例创建完成,但DOM节点还没有完成。【在这结束loading，还做一些初始化，实现函数自执行 】
+// 个人见解：就是在created周期函数执行的时候，此时已经能够拿到data中的值了。而向后台发送请求的过程其实也就是请求数据的过程，此时不涉及dom节点的渲染，所以个人认为向后台发送请求数据这一步完全可以在created函数中实现。
+created        组件实例创建完成,data里面的数据可以拿到,但DOM节点还没有完成。【在这结束loading，还做一些初始化，实现函数自执行 】
 
 beforeMount      模版编译/挂载之前
-mounted        模版编译/挂载之后，节点渲染完成(不保证组件已在document中)【在这发起后端请求，拿回数据，配合路由钩子做一些事情 。对应react的componentWillReceiveProps函数】
+mounted        模版编译/挂载之后，DOM和属性都渲染完成(不保证组件已在document中)【在这发起后端请求，拿回数据，配合路由钩子做一些事情 。对应react的componentWillReceiveProps函数】
 
 beforeUpdate     组件更新之前
 updated     	组件更新之后
