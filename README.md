@@ -49,7 +49,7 @@
 
 > 特别需要注意的一个问题是：无论是VueResource,还是VueRouter都可以使用Vue.use(VueRouter)的方式。但是有一个不行
  那就是:
- 
+  ```
  const router = new VueRouter({
   mode: 'history',
   routes
@@ -57,7 +57,7 @@
 export default new Vuex.Store({
   state
 })
- ```
+
  **axios**不存在这种use的方法，切记切记。
  ```在main.js中这样设置:
  import axios from 'axios'
