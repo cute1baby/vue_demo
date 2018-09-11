@@ -1,0 +1,42 @@
+vue方面：
+1、mutation部分：
+```
+const mutations = {
+  [types.SET_SINGER](state, singer) {   //包含两个参数，一个是state,一个是payload
+    state.singer = singer
+  },
+  [types.SET_PLAYING](state, flag) {
+    state.playing = flag
+  }
+}
+```
+
+2、actions部分：
+```
+export function selectPlay({commit, state}, {list, index}) {  //包含两个参数，第一个{commit,state},第二个payload
+  commit(types.SET_PLAYING, true)
+  commit(types.SET_FULLSCREEN, true)
+  if (state.mode === playMode.mode) {
+    let randomList = setRandom(list)
+    commit(types.SET_PLAYLIST, randomList)
+    // 返回当前歌曲播放的下标,如果是随机播放，那么当修改成随机列表之后对应的下标也要随着修改
+    index = findIndex(list, list[index])
+  } else {
+    commit(types.SET_PLAYLIST, list)
+  }
+  commit(types.SET_SEQUENCELIST, list)
+  commit(types.SET_CURRENTINDEX, index)
+}
+```
+
+
+dva部分：
+主要是model模块文件：将数据事件全部集成到一个文件中
+1、effects部分
+```
+effects: {
+    * queryPerson({payload}, {call}) { // 参数和call,调用方法有点像mutations,不过是return方法。
+      return yield call(service.queryPerson, payload);
+    },
+  },
+```
